@@ -1,0 +1,533 @@
+1. The four access modifiers in Java:
+
+  Private
+  Public
+  Protected
+  Default.
+
+Private:
+
+   The access level of a private modifier is only within the class.
+   It cannot be accessed from outside the class.
+
+class Data {
+    // private variable
+    private String name;
+}
+
+public class Main {
+    public static void main(String[] main){
+
+        // create an object of Data
+        Data d = new Data();
+
+        // access private variable and field from another class
+        d.name = "Programiz";
+    }
+}
+
+In the above example, we have declared a private variable named name. When we run the program, we will get the following error:
+
+Main.java:18: error: name has private access in Data
+        d.name = "Programiz";
+         ^
+
+Public: 
+
+   The access level public modifier is everywhere.
+   It can be accessed from within the class, within the package, outside the class,  and outside the package.
+
+
+public class Animal {
+    // public variable
+    public int legCount;
+
+    // public method
+    public void display() {
+        System.out.println("I am an animal.");
+        System.out.println("I have " + legCount + " legs.");
+    }
+}
+
+
+public class Main {
+    public static void main( String[] args ) {
+        // accessing the public class
+        Animal animal = new Animal();
+
+        // accessing the public variable
+        animal.legCount = 4;
+        // accessing the public method
+        animal.display();
+    }
+}
+
+Output:
+
+I am an animal.
+I have 4 legs.
+Here,
+
+The public class Animal is accessed from the Main class.
+The public variable legCount is accessed from the Main class.
+The public method display() is accessed from the Main class.
+
+
+Protected :
+
+   The access level pf a protected modifier is within the package and outside the package through child class.
+   If you don't make the child class, it cannot be accessed form outside the package.
+
+class Animal {
+    // protected method
+    protected void display() {
+        System.out.println("I am an animal");
+    }
+}
+
+class Dog extends Animal {
+    public static void main(String[] args) {
+
+        // create an object of Dog class
+        Dog dog = new Dog();
+         // access protected method
+        dog.display();
+    }
+}
+
+Output:
+
+I am an animal
+
+
+   In the above example, we have a protected method named display() inside the Animal class. The Animal class is inherited by the Dog class. To learn more about inheritance, visit Java Inheritance.
+
+   We then created an object dog of the Dog class. Using the object we tried to access the protected method of the parent class.
+
+   Since protected methods can be accessed from the child classes, we are able to access the method of Animal class from the Dog class.
+
+Default :
+
+   The access level of default modifier is only within the class.
+   It cannot be accessed from outside the package.
+   If you do not specify any access level, it will be the default.
+
+
+
+class Logger {
+    void message()
+{
+        System.out.println("This is a message");
+    }
+}
+
+Here, the Logger class has the default access modifier. And the class is visible to all the classes that belong to the defaultPackage package. However, if we try to use the Logger class in another class outside of defaultPackage, we will get a compilation error.
+
+
+
+2. Difference between Exception and Error:
+
+Exception:
+
+   Exceptions are caused by the code of the application itself.
+   The use of try-catch blocks can handle exceptions and recover the application from them.
+   Exceptions can be “checked” or “unchecked,” meaning they may or may not be caught by the compiler.
+   “IndexOutOfBounds” is an example of an unchecked exception, while “ClassNotFound” is an example of a checked exception.
+   In Java, an exceptions are defined in"java.lang.Exception".
+
+
+public class ExceptionTest {
+
+    public static void main(String args[])
+    {
+
+        try {
+
+            Class.forName("FindMissingClass");
+        }
+
+        catch (ClassNotFoundException ex) {
+
+            ex.printStackTrace();
+        }
+    }
+}
+
+When this code runs, the compiler outputs a ClassNotFound exception.
+
+Error:
+
+   Errors are usually raised by the environment in which the application is running. For example, an error will occur due to a lack of system resources.
+   It is not possible to recover from an error.
+   Errors occur at run-time and are not known by the compiler; hence, they are classified as “unchecked.”
+   “OutOfMemory” and “StackOverflow” are examples of errors.
+
+public class Main {
+    public static void main(String[] args) {
+        int a = 10;
+        int b = 5;
+        int c = a - b;
+        if (c > 0) {
+            System.out.println("a is greater than b");
+        } else {
+            System.out.println("b is greater than a");
+        }
+    }
+}
+
+In the code above, we compare the values of ‘a’ and ‘b’ and print a message based on which value is greater. However, we made a mistake in the logic. If ‘c’ is zero, it means that ‘a’ and ‘b’ are equal, but our code doesn’t handle that scenario.
+
+
+
+
+3. Difference between checked exception and unchecked exception:
+
+Checked Exception:
+
+  Checked exceptions occur at compile time.
+  The compiler checks a checked exception.
+  These types of exceptions can be handled at the time of compilation.
+  They are the sub-class of the exception class.
+  Here, the JVM needs the exception to catch and handle.
+  Examples of Checked exceptions:
+    File Not Found Exception
+    No Such Field Exception
+    Interrupted Exception
+    No Such Method Exception
+    Class Not Found Exception.
+
+Unchecked Exception:
+
+   Unchecked exceptions occur at runtime.
+   The compiler does not check these types of exceptions.
+   These types of exceptions cannot be a catch or handle at the time of compilation, because they get generated by the mistakes in the program.
+   They are runtime exceptions and hence are not a part of the Exception class.
+   Here, the JVM does not require the exception to catch and handle.
+   Examples of Unchecked Exceptions:
+	No Such Element Exception
+	Undeclared Throwable Exception
+	Empty Stack Exception
+	Arithmetic Exception
+	Null Pointer Exception
+	Array Index Out of Bounds Exception
+	Security Exception.
+
+
+4. Write a java program that reads user input for two integers and performs division. Handle the exception that is thrown when the second number is zero and display an error message to the user.
+
+
+package ExceptionHandling;
+
+import java.util.Scanner;
+
+public class Exception {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		try
+		{
+			// declare and initialize here.
+			int a,b,c;
+			Scanner KB=new Scanner(System.in);
+			
+			// input numbers here.
+			System.out.print("Enter first number : ");
+			a=KB.nextInt();
+       
+			System.out.print("Enter second number : ");
+			b=KB.nextInt();
+       
+			//throw to catch
+			c=a/b;
+			System.out.println("Result:"+c);
+		}
+		catch(ArithmeticException e)
+		{
+			System.out.println("Error:"+e.getMessage());
+			System.out.println("Error:"+e);
+		}
+		
+	}
+
+}
+
+output:
+first time run:
+
+Enter first number : 76
+Enter second number : 0
+Error:/ by zero
+Error:java.lang.ArithmeticException: / by zero
+
+
+second time run:
+
+Enter first number : 120
+Enter second number : 12
+Result:10
+
+
+5. Write the code of ArrayIndexOutOfBoundsException and StringIndexOutOfBoundException.
+
+
+package ExceptionHandling;
+
+public class ArrayIndexOutOfBoundException {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		 try {
+		      int arr[] = new int[10];
+
+		      arr[10] = 100;
+		    } catch (ArrayIndexOutOfBoundsException e) {
+		      System.out.println("Exception: " + e);
+		    }   
+	}
+
+}
+
+
+output:
+
+Exception: java.lang.ArrayIndexOutOfBoundsException: Index 10 out of bounds for length 10.
+
+
+
+6. You are building a login system for a website using java. If the user enters an incorrect password, you want to display a message informing them of the error. How would you use exception handling to handle this situation?
+
+
+package ExceptionHandling;
+
+import java.util.Scanner;
+
+public class Login {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		
+		int passwordLength=8, upChars=0, lowChars=0;
+	      int special=0, digits=0;
+	      char ch;
+	      Scanner s = new Scanner(System.in);
+	      
+	      
+	      
+	      System.out.print("\nCreate a Password: ");
+	      String password = s.nextLine();
+	      
+	      int total = password.length();
+	      if(total<passwordLength)
+	      {
+	         System.out.println("\nThe Password's Length has to be of 8 characters or more.");
+	         return;
+	      }
+	      else
+	      {
+	         for(int i=0; i<total; i++)
+	         {
+	            ch = password.charAt(i);
+	            if(Character.isUpperCase(ch))
+	               upChars++;
+	            else if(Character.isLowerCase(ch))
+	               lowChars++;
+	            else if(Character.isDigit(ch))
+	               digits++;
+	            else
+	            {
+	               if(ch=='<' || ch=='>')
+	               {
+	                  System.out.println("\nThe Password is Malicious!");
+	                  return;
+	               }
+	               else
+	                  special++;
+	            }
+	         }
+	      }
+	      if(upChars!=0 && lowChars!=0 && digits!=0 && special!=0)
+	      {
+	         if(total>=12)
+	         {
+	            System.out.println("\nThe Strength of Password is Strong.");
+	         }
+	         else
+	         {
+	            System.out.println("\nThe Strength of Password is Medium.");
+	         }
+	         System.out.println("\n----The Password Contains----");
+	         System.out.println("UpperCase Character: " +upChars);
+	         System.out.println("LowerCase Character: " +lowChars);
+	         System.out.println("Digit: " +digits);
+	         System.out.println("Special Character: " +special);
+	      }
+	      else
+	      {
+	         if(upChars==0)
+	            System.out.println("\nThe Password must contain at least one uppercase character.");
+	         if(lowChars==0)
+	            System.out.println("\nThe Password must contain at least one lowercase character.");
+	         if(digits==0)
+	            System.out.println("\nThe Password must contain at least one digit.");
+	         if(special==0)
+	            System.out.println("\nThe Password must contain at least one special character.");
+	      }
+	}
+
+}
+
+
+output:
+
+Create a Password: 567
+
+The Password's Length has to be of 8 characters or more.
+
+
+
+Create a Password: Sri_lekha@95
+
+The Strength of Password is Strong.
+
+----The Password Contains----
+UpperCase Character: 1
+LowerCase Character: 7
+Digit: 2
+Special Character: 2
+
+
+
+Create a Password: zenclass2024
+
+The Password must contain at least one uppercase character.
+
+The Password must contain at least one special character.
+
+
+
+Create a Password: Guvi@2024
+
+The Strength of Password is Medium.
+
+----The Password Contains----
+UpperCase Character: 1
+LowerCase Character: 3
+Digit: 4
+Special Character: 1
+
+
+
+
+
+7. Create a custom exception in java called "InvalidAgeException" that is thrown when the user enters an age less than 18. Implement exception handling in a java program to catch the "InvalidAgeException" and display an error message.
+
+package ExceptionHandling;
+
+import java.util.Scanner;
+
+
+class InvalidAgeException  extends Exception  
+{  
+
+public InvalidAgeException (String message)  
+{  
+ 
+super(message);  
+}  
+}  
+ 
+
+public class CustomExceptionExample1  
+{  
+
+
+static void checkEligibility (int age) throws InvalidAgeException
+{    
+
+if(age < 18){  
+
+throw new InvalidAgeException("You are not eligible for the exam."); 
+}else {   
+System.out.println("You are eligible for the exam.");   
+}
+   
+}    
+
+ 
+public static void main(String args[])  
+{  
+
+Scanner scan = new Scanner(System.in);
+
+
+int age;
+
+
+System.out.println("Please enter your age:");
+age = scan.nextInt();
+
+scan.close();
+
+try  
+{  
+
+checkEligibility(age);  
+}  
+catch (InvalidAgeException exception)  
+{  
+System.out.println("We found an exception:");  
+ 
+  
+System.out.println(exception);
+
+}
+    
+}
+  
+}  
+
+
+output:
+
+Please enter your age:
+12
+We found an exception:
+ExceptionHandling.java.InvalidAgeException: You are not eligible for the exam.
+
+
+8. Implement exception handling in a java program that reads data from a file. If the file does not exist, throw a "FileNotFoundException" and display an error message to the user.
+ 
+
+
+
+package ExceptionHandling;
+
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+
+public class FileProgram {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+	
+		        BufferedReader br = null;
+
+		        try {
+					FileInputStream obj = new FileInputStream("E:\\Selenium Webdriver\\File2.txt");
+				} catch (FileNotFoundException e) {
+					
+					System.out.println(e);
+				}
+
+		        }
+		    }
+
+
+output:
+
+java.io.FileNotFoundException: E:\Selenium Webdriver\File2.txt (The system cannot find the path specified)
