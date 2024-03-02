@@ -1,0 +1,546 @@
+prog 1:
+
+package com.java;
+
+//create class person
+
+class Person
+{
+	// attributes are created name and age
+	String name;
+	int age;
+	//creating constructor same as class name
+	public Person() {
+		name = "Peter";
+		age = 24;
+		
+		}
+	//creating getter methods for attribute name 
+	public String getName() {
+		return name;
+	}
+	//creating setter methods for attribute name
+	public void setName(String name) {
+		this.name = name;
+	}
+	//creating getter methods for attribute age 
+	public int getAge() {
+		return age;
+	}
+	//creating setter methods for attribute age
+	public void setAge(int age) {
+		this.age = age;
+	} 
+}
+
+
+//main
+public class Constructor {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+	
+		Person p1 = new Person();
+			System.out.println("Name :" + p1.getName());
+			System.out.println("Age :" + p1.getAge());
+			
+		}
+		
+	}
+
+output:
+Name :Peter
+Age :24
+
+
+prog 2:
+
+package javaPrograms;
+
+public class Employee {
+
+	int id;
+	String firstName , lastName;
+	int salary;
+	
+	public Employee (int id, String firstName, String lastName, int salary)
+	{
+		this.id = id;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.salary = salary;
+	}
+	
+	
+	public void raiseSalary(int percentage)
+	{
+		salary = salary + (salary * percentage / 100);
+	}
+}
+
+package javaPrograms;
+
+public class EmployeeRun extends Employee {
+	
+	
+	public EmployeeRun(int id, String firstName, String lastName, int salary) {
+		super(id, firstName, lastName, salary);
+		// TODO Auto-generated constructor stub
+	}
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		EmployeeRun obj = new EmployeeRun(102, "Sai", "Ram", 40000);
+		
+		obj.getSalary();
+		
+		obj.setSalary(40000);
+		
+		obj.getSalary();
+		
+		obj.getAnnualSalary();
+		
+		int id = obj.getId();
+		System.out.println(id);
+		
+		obj.getName();
+		
+		obj.toString();
+		
+		obj.raiseSalary(50);
+		
+		obj.toString();
+		
+		
+		
+		
+	}
+	
+	public void setSalary(int salary) {
+		this.salary = salary;
+	}
+	
+	
+	public int getId() {
+		//System.out.println(id);
+		return id;
+	}
+	
+	public String getFirstName() {
+		System.out.println(firstName);
+		return firstName;
+	}
+	
+	public String getLastName() {
+		System.out.println(lastName);
+		return lastName;
+	}
+	
+	public String getName() {
+		//System.out.println(firstName + " " + lastName);
+		return (firstName + " " + lastName); //Sai Ram
+	}
+	
+	public int getSalary() {
+		System.out.println(salary);
+		return salary;
+	}
+	
+	public int getAnnualSalary() {
+		System.out.println(salary * 12);
+		return (salary * 12);
+	}
+	
+	public String toString() {
+		System.out.println(id + " " + getName() + " " + salary);
+		return (id + " " + getName() + " " + salary);
+	}
+}
+
+output:
+
+40000
+40000
+480000
+102
+102 Sai Ram 40000
+102 Sai Ram 60000
+
+prog 3:
+
+package javaPrograms;
+
+class Circle
+{
+	float radius;
+	public Circle()
+	{
+		radius = 7;
+	}
+	public Circle(float r)
+	{
+		radius = r;
+	}
+	float circumference()
+	{
+		
+		return (float) (2 * Math.PI * radius);
+	}
+}
+
+public class Constructor {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+Circle c = new Circle();
+System.out.println("Circumferece:"+c.circumference());
+Circle c1 =new Circle(5);
+System.out.println("Circumferece:"+c1.circumference());
+
+	}
+
+}
+
+output:
+
+Circumferece:43.982296
+Circumferece:31.415926
+
+
+prog 4:
+
+package javaPrograms;
+
+class Account
+{
+	 double balance;
+
+    // Constructor with no arguments
+    public Account() {
+        balance = 0.0;
+    }
+
+    // Constructor with two arguments
+    public Account(double initialBalance) {
+        balance = initialBalance;
+    }
+
+    public void withdraw(double amount) {
+        if (amount > 0 && amount <= balance) {
+            balance -= amount;
+            System.out.println("Withdrawn: " + amount);
+        } else {
+            System.out.println("Invalid withdrawal amount!");
+        }
+    }
+
+    public void deposit(double amount) {
+        if (amount > 0) {
+            balance += amount;
+            System.out.println("Deposited: " + amount);
+        } else {
+            System.out.println("Invalid deposit amount!");
+        }
+    }
+
+    public double getBalance() {
+        return balance;
+    }
+}
+
+
+public class Constructor1 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Account account1 = new Account();
+		System.out.println("Initial Balance: " + account1.getBalance());
+
+        account1.deposit(3000.0);
+        System.out.println("New Balance after Deposit: " + account1.getBalance());
+
+        account1.withdraw(2000.0);
+        System.out.println("New Balance after Withdrawal: " + account1.getBalance());
+
+        // Create an Account object using the constructor with two arguments
+        Account account2 = new Account(6000.0);
+        System.out.println("Initial Balance: " + account2.getBalance());
+
+        account2.deposit(2600.0);
+        System.out.println("New Balance after Deposit: " + account2.getBalance());
+
+        account2.withdraw(1080.0);
+        System.out.println("New Balance after Withdrawal: " + account2.getBalance());
+    }
+	}
+
+output:
+
+Initial Balance: 0.0
+Deposited: 3000.0
+New Balance after Deposit: 3000.0
+Withdrawn: 2000.0
+New Balance after Withdrawal: 1000.0
+Initial Balance: 6000.0
+Deposited: 2600.0
+New Balance after Deposit: 8600.0
+Withdrawn: 1080.0
+New Balance after Withdrawal: 7520.0
+
+
+prog 5:
+
+package javaPrograms;
+ class Tea {
+    private boolean isPrepared;
+    private boolean hasMilk;
+    private boolean hasSugar;
+
+     Tea() {
+        this.isPrepared = false;
+        this.hasMilk = false;
+        this.hasSugar = false;
+    }
+// creating a method to prepare tea.
+    public void prepareTea() {
+        if (!isPrepared) {
+            System.out.println("Preparing basic tea with hot water and tea leaves.");
+            isPrepared = true;
+        } else {
+            System.out.println("Tea has already been prepared.");
+        }
+    }
+// creating a method to add milk
+    public void addMilk() {
+        if (isPrepared) {
+            if (!hasMilk) {
+                System.out.println("Adding milk to the tea.");
+                hasMilk = true;
+            } else {
+                System.out.println("Milk has already been added to the tea.");
+            }
+        } else {
+            System.out.println("Please prepare the tea first.");
+        }
+    }
+//creating a method to add sugar
+    public void addSugar() {
+        if (isPrepared) {
+            if (!hasSugar) {
+                System.out.println("Adding sugar to the tea.");
+                hasSugar = true;
+            } else {
+                System.out.println("Sugar has already been added to the tea.");
+            }
+        } else {
+            System.out.println("Please prepare the tea first.");
+        }
+    }
+}
+
+public class Inheritance {
+
+	public static void main(String[] args) {
+		
+		// TODO Auto-generated method stub
+
+		Tea tea = new Tea();
+        tea.prepareTea(); // Prepare basic tea
+        tea.addMilk(); // Add milk to the tea
+        tea.addSugar(); // Add sugar to the tea
+        tea.addMilk(); // Try adding milk again (already added)
+        tea.prepareTea(); // Try preparing tea again (already prepared)
+    }
+}
+	
+
+output:
+
+Preparing basic tea with hot water and tea leaves.
+Adding milk to the tea.
+Adding sugar to the tea.
+Milk has already been added to the tea.
+Tea has already been prepared.
+
+
+
+prog 6:
+
+package javaPrograms;
+
+ class Tea1 {
+    protected boolean isPrepared;
+    protected boolean hasMilk;
+    protected boolean hasSugar;
+
+     Tea1() {
+        this.isPrepared = false;
+        this.hasMilk = false;
+        this.hasSugar = false;
+    }
+
+    public void prepareTea() {
+        if (!isPrepared) {
+            System.out.println("Preparing basic tea with hot water and tea leaves.");
+            isPrepared = true;
+        } else {
+            System.out.println("Tea has already been prepared.");
+        }
+    }
+
+    public void addMilk() {
+        if (isPrepared) {
+            if (!hasMilk) {
+                System.out.println("Adding milk to the tea.");
+                hasMilk = true;
+            } else {
+                System.out.println("Milk has already been added to the tea.");
+            }
+        } else {
+            System.out.println("Please prepare the tea first.");
+        }
+    }
+
+    public void addSugar() {
+        if (isPrepared) {
+            if (!hasSugar) {
+                System.out.println("Adding sugar to the tea.");
+                hasSugar = true;
+            } else {
+                System.out.println("Sugar has already been added to the tea.");
+            }
+        } else {
+            System.out.println("Please prepare the tea first.");
+        }
+    }
+}
+
+//black tea subclass
+ class BlackTea extends Tea1 {
+    @Override
+    public void prepareTea() {
+        if (!isPrepared) {
+            System.out.println("Preparing black tea with hot water and black tea leaves.");
+            System.out.println("Brewing time: 7 minutes");
+            isPrepared = true;
+        } else {
+            System.out.println("Black tea has already been prepared.");
+        }
+    }
+}
+//green tea subclass
+ class GreenTea extends Tea1 {
+    @Override
+    public void prepareTea() {
+        if (!isPrepared) {
+            System.out.println("Preparing green tea with hot water and green tea leaves.");
+            System.out.println("Brewing time: 2 minutes");
+            isPrepared = true;
+        } else {
+            System.out.println("Green tea has already been prepared.");
+        }
+    }
+}
+
+//herbal tea subclass
+ class HerbalTea extends Tea1 {
+    @Override
+    public void prepareTea() {
+        if (!isPrepared) {
+            System.out.println("Preparing herbal tea with hot water and herbal tea ingredients.");
+            System.out.println("Brewing time: 9 minutes");
+            isPrepared = true;
+        } else {
+            System.out.println("Herbal tea has already been prepared.");
+        }
+    }
+}
+public class multilevel_Inheritance {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		BlackTea blackTea = new BlackTea();
+        blackTea.prepareTea(); // Prepare black tea
+        blackTea.addMilk(); // Add milk to black tea
+        blackTea.addSugar(); // Add sugar to black tea
+
+        GreenTea greenTea = new GreenTea();
+        greenTea.prepareTea(); // Prepare green tea
+        greenTea.addSugar(); // Add sugar to green tea
+
+        HerbalTea herbalTea = new HerbalTea();
+        herbalTea.prepareTea(); // Prepare herbal tea
+        herbalTea.addMilk(); // Try adding milk to herbal tea (not applicable)
+	}
+}
+
+
+output:
+
+Preparing black tea with hot water and black tea leaves.
+Brewing time: 7 minutes
+Adding milk to the tea.
+Adding sugar to the tea.
+Preparing green tea with hot water and green tea leaves.
+Brewing time: 2 minutes
+Adding sugar to the tea.
+Preparing herbal tea with hot water and herbal tea ingredients.
+Brewing time: 9 minutes
+Adding milk to the tea.
+
+
+prog 7:
+
+
+package javaPrograms;
+
+public class varargs {
+
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+Tea1[] teas = new Tea1[4];
+        
+        teas[0] = new Tea1();
+        teas[1] = new BlackTea();
+        teas[2] = new GreenTea();
+        teas[3] = new HerbalTea();
+        
+        for (Tea1 tea : teas) {
+            tea.prepareTea();
+            tea.addMilk();
+            tea.addSugar();
+            System.out.println("--------------------");
+        }
+
+	}
+
+}
+
+
+output:
+
+Preparing basic tea with hot water and tea leaves.
+Adding milk to the tea.
+Adding sugar to the tea.
+--------------------
+Preparing black tea with hot water and black tea leaves.
+Brewing time: 7 minutes
+Adding milk to the tea.
+Adding sugar to the tea.
+--------------------
+Preparing green tea with hot water and green tea leaves.
+Brewing time: 2 minutes
+Adding milk to the tea.
+Adding sugar to the tea.
+--------------------
+Preparing herbal tea with hot water and herbal tea ingredients.
+Brewing time: 9 minutes
+Adding milk to the tea.
+Adding sugar to the tea.
+--------------------
+
+
+
+
