@@ -1,0 +1,166 @@
+TASK - 12
+
+1.
+
+package com.example.hr;
+
+public class Employee {
+
+		String name;
+		int id;
+		double Salary;
+		
+		public void printName(String name,int id) {
+			this.name=name;
+			this.id=id;
+			System.out.println("Name is :"+ name +"  "+ "ID is:" + id);
+		
+		}
+		
+		public void printSalary(double Salary) {
+			this.Salary=Salary;
+			System.out.println("Salary is:"+Salary);
+
+		}
+	}
+
+
+
+package com.example.hrtest;
+
+import com.example.hr.Employee;
+
+public class EmployeeTest extends Employee {
+
+	public static void main(String[] args) {
+		
+		Employee emp = new Employee();
+		emp.printName("Sri",100);
+		emp.printSalary(100000);
+		
+		
+
+	}
+
+}
+
+
+OUTPUT:
+
+Name is :Sri  ID is:100
+Salary is:100000.0
+
+
+
+2.
+
+package Collections;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class list1 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		
+				List<String> listobj =new ArrayList<String>();
+				
+			
+			listobj.add("Laptop");
+			listobj.add("chair");
+			listobj.add("hello");
+			listobj.add("world");
+			listobj.add("tree"); 
+	
+			System.out.println("ArrayList:"+ listobj);
+			
+			System.out.println("Size of ArrayList:"+ listobj.size());
+			
+			listobj.clear();
+			
+			System.out.println("ArrayList:"+ listobj);
+			System.out.println("Size of ArrayList:"+ listobj.size());
+			}
+			
+
+		}
+
+OUTPUT:
+
+ArrayList:[Laptop, chair, hello, world, tree]
+Size of ArrayList:5
+ArrayList:[]
+Size of ArrayList:0
+
+
+
+3.
+
+package Collections;
+
+import java.util.TreeMap;
+
+public class treemap1 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		TreeMap<Integer, String> treemap1 = new TreeMap<Integer, String>();
+		treemap1.put(24,"Ram");
+		treemap1.put(2,"Abi");
+		treemap1.put(13,"Neha");
+		treemap1.put(5,"Dinesh");
+		treemap1.put(27,"Sakthi");
+		System.out.println("Alphabetical Order:"+treemap1);
+		
+		
+	}
+
+}
+
+
+OUTPUT:
+
+Alphabetical Order:{2=Abi, 5=Dinesh, 13=Neha, 24=Ram, 27=Sakthi}
+
+
+
+4.
+
+package Collections;
+
+import java.util.ArrayList;
+
+public class List2Array {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+     ArrayList<String> arrlist = new ArrayList<String>();
+     arrlist.add("Blue");
+     arrlist.add("Red");
+     arrlist.add("testing");
+     arrlist.add("Anand");
+     arrlist.add("Laptop");
+     System.out.println("ArrayList:"+arrlist);
+     String[] arr = new String[arrlist.size()];
+     arrlist.toArray(arr);
+     System.out.println("Array:");
+     for(String Item:arr)
+     {
+    	 System.out.print(Item+",");
+    	 
+     }
+		
+		
+	}
+
+}
+
+
+OUTPUT:
+
+ArrayList:[Blue, Red, testing, Anand, Laptop]
+Array:
+Blue,Red,testing,Anand,Laptop
