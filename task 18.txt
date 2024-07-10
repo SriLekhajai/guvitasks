@@ -1,0 +1,64 @@
+package com.task18;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.Select;
+
+public class Facebook {
+	public static void main(String[] args)throws InterruptedException
+	{
+		WebDriver driver = new ChromeDriver();
+		driver.get("https://www.facebook.com/");
+		driver.manage().window().maximize();
+	
+	String urlFromWebpage = driver.getCurrentUrl();
+	if(urlFromWebpage.equals("https://www.facebook.com/"))
+	{
+		System.out.println("PASS");
+	}else
+	{
+		System.out.println("FAIL");
+	}
+	
+		WebElement createAccountHeading = driver.findElement(By.id("u_0_0_+1"));
+		if(createAccountHeading.isDisplayed())
+		{
+			System.out.println("PASS");
+		}
+		else
+		{
+			System.out.println("FAIL");
+		}
+
+	driver.findElement(By.name("firstneme")).sendKeys("Test");
+   driver.findElement(By.name("lastname")).sendKeys("User");
+   driver.findElement(By.name("reg_email__")).sendKeys("testuser@test.com");
+   driver.findElement(By.name("reg_passwd__")).sendKeys("TestPassword");
+   WebElement dateElement = driver.findElement(By.id("day"));
+   WebElement monthElement = driver.findElement(By.id("month"));
+   WebElement yearElement = driver.findElement(By.id("year"));
+   Select dateDropdown = new Select(dateElement);
+   Select monthDropdown = new Select(monthElement);
+   Select yearDropdown = new Select(yearElement);
+   dateDropdown.selectByVisibleText("11");
+   monthDropdown.selectByVisibleText("May");
+   yearDropdown.selectByVisibleText("1985");
+   driver.findElement(By.xpath("/html/body/div[3]/div[2]/div/div/div[2]/div/div/div[1]/form/div[1]/div[7]/span/span[1]/input"));
+   
+	}
+	}
+	
+
+	
+   
+	
+	
+	
+	
+	
+	
+	
+
+
