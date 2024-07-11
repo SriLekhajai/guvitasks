@@ -1,0 +1,53 @@
+package com.task19;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class locators {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		
+		WebDriver driver = new ChromeDriver();
+		driver.get("https://www.guvi.in/register");
+		driver.manage().window().maximize();
+		//Sign up
+		driver.findElement(By.xpath("//*[@id=\'sign-in-page\']/section/div/div[2]/h2"));
+		//login
+		driver.findElement(By.xpath("//*[@id=\'sign-in-page\']/section/div/div[2]/p/a"));
+		//Already have an account?
+		driver.findElement(By.xpath("//'[@id=\"sign-in-page\']/section/div/div[2]/p"));
+		//Full name
+		driver.findElement(By.name("Full Name"));
+		driver.findElement(By.id("name"));
+		// This name will appear in certificates
+		driver.findElement(By.xpath("//*[@id=\'signup-form\']/div[1]/small"));
+		//Email Address
+		driver.findElement(By.xpath("//*[@id=\'emailgroup\']/label"));
+		driver.findElement(By.id("email"));
+		//Password
+		driver.findElement(By.xpath("//*[@id=\'signup-form\']/div[3]/label"));
+		driver.findElement(By.id("togglePassword"));
+		//Set a password with
+		driver.findElement(By.className("ul-head"));
+		//Atleast 6 characters
+		driver.findElement(By.className("min-char"));
+		//Atleast 1 numeral
+		driver.findElement(By.className("one-num"));
+		//Atleast 1 alphabet
+		driver.findElement(By.className("one-alpha"));
+		//Mobile Number
+		driver.findElement(By.xpath("//*[@id=\'signup-form\']/div[4]/label"));
+		//flag
+		driver.findElements(By.className("iti__flag iti__in"));
+		//+91
+		driver.findElement(By.className("iti__selected-dial-code"));
+		driver.findElement(By.id("mobileNumber"));
+		//Signup button
+		driver.findElement(By.id("btn signup-btn"));
+		
+	}
+
+}
