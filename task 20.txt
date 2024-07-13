@@ -1,0 +1,65 @@
+package com.task20;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class DatePicker {
+
+	public static void main(String[] args) throws InterruptedException {
+		// TODO Auto-generated method stub
+
+		WebDriver driver = new ChromeDriver();
+		driver.get("https://jqueryui.com/datepicker/");
+		driver.manage().window().maximize();
+		driver.switchTo().frame(0);
+		driver.findElement(By.id("datepicker")).sendKeys("08/22/2024");
+		System.out.println("The Slected date is :" + "08/22/2024");
+		Thread.sleep(3000);
+		driver.close();
+		
+	}
+
+}
+
+
+
+
+
+
+
+package com.task20;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.Select;
+
+public class Guvi_Signup {
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		WebDriver driver = new ChromeDriver();
+		driver.get("https://www.guvi.in/");
+		driver.manage().window().maximize();
+		WebElement signupBtn = driver.findElement(By.xpath("/html/body/div[1]/div/div[5]/div/div[2]/a"));
+		signupBtn.click();
+		driver.findElement(By.id("name")).sendKeys("Sri Lekha");
+		driver.findElement(By.xpath("//*[@id=\'email\']")).sendKeys("srilekha95@gmail.com");
+		driver.findElement(By.id("password")).sendKeys("srilekha@95");
+		driver.findElement(By.id("mobileNumber")).sendKeys("9789035436");
+		WebElement signupBtn1 = driver.findElement(By.id("signup-btn"));
+		signupBtn1.click();
+		System.out.println("User is registered successfully");
+		WebElement loginBtn = driver.findElement(By.id("login-btn"));
+		loginBtn.click();
+		driver.findElement(By.id("email")).sendKeys("srilekha95@gmail.com");
+		driver.findElement(By.id("password")).sendKeys("srilekha@95");
+		WebElement loginBtn1 = driver.findElement(By.id("login-btn"));
+		loginBtn1.click();
+		System.out.println("User is logged in successfully");
+		driver.close();
+
+	}
+
+}
